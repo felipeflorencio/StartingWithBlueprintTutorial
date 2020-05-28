@@ -2,7 +2,11 @@ import os
 from flask import Flask
 from extensions import database, commands
 
+# blueprint import
 from blueprints.main.views import main
+from blueprints.products.views import product
+from blueprints.contact.views import contact
+from blueprints.about.views import about
 
 def create_app():
     app = Flask(__name__)
@@ -15,35 +19,11 @@ def create_app():
     
     # register blueprint
     app.register_blueprint(main)
-
-    @app.route("/listOfClothes")
-    def list_of_clothes():
-        return "List of clothes"
-
-    @app.route("/listOfShoes")
-    def list_of_shoes():
-        return "List of shoes"
-
-    @app.route("/listOfTshirts")
-    def list_of_tshirts():
-        return "List of t-shirts"
-
-    @app.route("/aboutMe")
-    def about_me():
-        return "About me"
-
-    @app.route("/aboutMyWork")
-    def about_my_work():
-        return "Abouy my work"
-
-    @app.route("/contactMe")
-    def contact_me():
-        return "Contact Me"
-
-    @app.route("/contactForSponsor")
-    def contact_for_sponsor():
-        return "Contact for Sponsor"
+    app.register_blueprint(product)
+    app.register_blueprint(contact)
+    app.register_blueprint(about)
     
+
     return app
 
 
