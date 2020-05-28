@@ -1,6 +1,4 @@
 import os
-basedir = os.path.abspath(os.path.dirname(__file__))
-
 
 class Config(object):
     DEBUG = False
@@ -16,4 +14,5 @@ class ProductionConfig(Config):
 class DevelopmentConfig(Config):
     ENV="development"
     DEVELOPMENT=True
+    DEBUG=True
     SQLALCHEMY_DATABASE_URI="sqlite:///development_database.db"
